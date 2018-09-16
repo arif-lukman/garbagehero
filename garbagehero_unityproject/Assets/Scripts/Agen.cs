@@ -9,10 +9,12 @@ public class Agen : MonoBehaviour {
 
 	private float durasi = 0.1f;
 	private float waktuTersisa = 0;
+	private GameObject bola;
 
 	void Awake(){
 		touchXtext.text="xx";
 		touchYtext.text="yy";
+		bola = Resources.Load<GameObject> ("Prefabs/bola");
 
 	}
 	void Update(){
@@ -37,8 +39,7 @@ public class Agen : MonoBehaviour {
 		if (waktuTersisa < durasi) {
 			waktuTersisa += Time.deltaTime;
 			if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended){ 
-				touchXtext.text = "tembak " ;
-				touchYtext.text = "Ayok " ;
+				Instantiate (bola, transform.position, transform.rotation);
 			}
 		} 
 	}
